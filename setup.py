@@ -16,6 +16,11 @@ module = Extension(
 with open("README.md", "r", encoding="utf-8") as read_me:
     long_description = read_me.read()
 
+test_dependencies = ["pytest==6.2.5", "requests==2.26.0"]
+extras = {
+    'test': test_dependencies,
+}
+
 setup(
     name="fastwsgi",
     version="0.0.5",
@@ -41,6 +46,8 @@ setup(
     ],
     python_requires=">=3.6",
     install_requires=["click>=7.0"],
+    test_requires=test_dependencies,
+    extras_require=extras,
     cmdclass={"build_ext": build_libuv},
     entry_points={
         "console_scripts": [

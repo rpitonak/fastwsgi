@@ -41,3 +41,8 @@ jobs:
         run: python setup.py install
       - name: Test FastWSGI Python module import
         run: python -c "import fastwsgi"
+      - name: Run unit tests
+        run: |
+          pip install ".[test]"
+          pytest --color=yes --verbose --showlocals tests
+
